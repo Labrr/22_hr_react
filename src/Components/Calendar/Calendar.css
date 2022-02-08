@@ -1,0 +1,28 @@
+.cal-container{
+    /* display: flex; */
+    position: absolute;
+    background-color: #fff;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    transform: translateY(-100%);
+    transition: all 1400ms;
+    /* background-color: darkcyan; */
+    overflow: scroll;
+    /* z-index: -1; */
+    z-index: -1;
+}
+
+.cal-container::-webkit-scrollbar {
+    display: none;
+}
+
+.calendar{
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Thursday{
+    
+}

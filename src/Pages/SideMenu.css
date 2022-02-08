@@ -1,0 +1,12 @@
+.SideMenu{
+    position: absolute;
+    height: 100vh;
+    width: 18em;
+    background-color: #C35B5A;
+}
+
+/* CSV
+C35B5A,8A3973,6E52C5,D5C933,094EBB
+
+/* With # */
+/* #C35B5A, #8A3973, #6E52C5, #D5C933, #094EBB */
