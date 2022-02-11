@@ -8,8 +8,8 @@ const AudioPlayer = ({ url }) => {
     
 
     return (
-        <div>
-            
+        <div className="audio-player">
+            <h1>Button</h1>
         </div>
     )
 }

@@ -2,62 +2,48 @@ import React, {useState, useEffect } from 'react'
 import Weekday from '../Weekday/Weekday';
 import  './Calendar.css';
 
-export default function Calendar( { isLoaded, error, items} ) {
-  
 
-  const [mon, setMon] = useState("")
+export default function Calendar( { week, error } ) {
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if(isLoaded){
-      
-     
-      setMon()
-      console.log(filterDay(items, 6))
+    if(week && week.length > 0){
+      setLoading(true)      
     }
     
     return () => {
     };
-  }, [items]);
+  }, [week]);
   
-
-
-
-
-  function filterDay(week, day) {
-    var eventsThatDay = week.filter(function (el) {
-      
-      let parseDayDate = new Date(el.start.dateTime)
-  
-      console.log(parseDayDate.getDay() + " = " + day);
-      return parseDayDate.getDay() == day
-    });
-    console.log(eventsThatDay);
-    return eventsThatDay;
-    // const thu = items.filter()
-  }
-  
-
 
   if (error) {
     return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
+  } else if (!loading) {
     return <div>Loading...</div>;
   } else {
-
+     
     return(
       <div className="cal-container">
         <div className="calendar">
-          <ul>
-            {items.map(item => (
-              <li key={item.id}> 
-                <Weekday day_timestr= {item.start} />
-
-                {item.start.dateTime} {item.summary}     
-              </li>
-            ))}
-          </ul>
+            {doit(week)}
           </div>
       </div>
     );
   }
 }
+
+function doit(week) {
+  const weekComp = [];
+  for (let i = 0; i < week.length; i++) {
+      const daysEvents = week[i];
+      if(daysEvents.length <= 0 && i <= 3){
+        weekComp.push(<Weekday key={i} daysEvents={daysEvents} day={7} />)
+      }else{
+        weekComp.push(<Weekday key={i} daysEvents={daysEvents} day={i} />)
+      }
+    }
+    console.log(weekComp)
+    return weekComp;
+}
+
+

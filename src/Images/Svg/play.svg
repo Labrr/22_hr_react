@@ -11,7 +11,7 @@
 		<clipPath id="SVGID_2_">
 			<use xlink:href="#SVGID_1_"  overflow="visible"/>
 		</clipPath>
-		<circle clip-path="url(#SVGID_2_)" fill="none" stroke="#000" stroke-width="9.372" cx="150" cy="150" r="143.025"/>
+		<circle clip-path="url(#SVGID_2_)" fill="none" stroke="#fff" stroke-width="9.372" cx="150" cy="150" r="143.025"/>
 	</g>
 	<g>
 		<defs>
@@ -20,7 +20,7 @@
 		<clipPath id="SVGID_4_">
 			<use xlink:href="#SVGID_3_"  overflow="visible"/>
 		</clipPath>
-		<path clip-path="url(#SVGID_4_)" fill="#000" d="M240.221,160.225c0,0,17.98-10.38,0-20.762L106.678,62.362
+		<path clip-path="url(#SVGID_4_)" fill="#fff" d="M240.221,160.225c0,0,17.98-10.38,0-20.762L106.678,62.362
 			c0,0-17.98-10.38-17.98,10.379v154.204c0,0,0,20.764,17.98,10.382L240.221,160.225z"/>
 	</g>
 </g>

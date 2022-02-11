@@ -1,0 +1,10 @@
+.nextup{
+    grid-area: nextup;
+    background-color: aqua;
+    width: 30em;
+    min-height: 30em;
+    /* height: 16em; */
+
+}
+
+li { list-style-image: url("../../Images/Svg/welleInc.svg"); } 

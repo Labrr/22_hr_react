@@ -1,28 +1,43 @@
 .cal-container{
-    /* display: flex; */
-    position: absolute;
-    background-color: #fff;
+    grid-area: cal;
+    width: 1em;
     height: 100vh;
-    width: 100%;
-    left: 0;
-    transform: translateY(-100%);
-    transition: all 1400ms;
-    /* background-color: darkcyan; */
-    overflow: scroll;
-    /* z-index: -1; */
-    z-index: -1;
+    width: 30em;
+    transition: all 400ms;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.weekday{
+    /* width: auto; */
+    padding: 1em;
 }
 
 .cal-container::-webkit-scrollbar {
     display: none;
 }
 
-.calendar{
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-around;
+.calendar::-webkit-scrollbar {
+    display: none;
 }
 
-.Thursday{
-    
+.calendar{
+    font-family: sans-serif;
+    overflow-y: scroll;
+}
+
+div#HIDE{
+    display: none;
+}
+div#THU{
+    grid-area: thu;
+}
+div#FRI{
+    grid-area: fri;
+}
+div#SAT{
+    grid-area: sat;
+}
+div#SUN{
+    grid-area: sun;
 }
