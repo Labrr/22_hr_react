@@ -3,7 +3,7 @@
     overflow: hidden;
     max-height: 100vh;
     width: 30em;
-    background-color: #C35B5A;
+    /* background-color: var(--bg); */
     display: grid;
     grid-template-columns: 1fr auto;
     /* grid-template-rows: 40em, 20em 1fr; */
@@ -29,7 +29,7 @@
 
 .halloContainer{
   grid-area: hallo;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   width: 30em;
 }
 

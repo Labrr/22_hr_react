@@ -1,4 +1,27 @@
 span.evTime{
     color: --var(--evTimeColor);
     color:aliceblue;
+    font-size: 3em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+}
+
+span.evName{
+    /* background-color: #fff; */
+    font-size: 3em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+    transition: ease-out 300ms;
+    cursor: pointer;
+}
+span.evName:hover{
+
+    /* -webkit-text-fill-color: #fff; */
+    font-size: 3em;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke-width: 1.5px;
+}
+
+.weekday{
+    border-top: 2px solid blanchedalmond;
 }

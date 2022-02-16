@@ -7,4 +7,11 @@
 
 }
 
+.preview{
+    font-size: 1em;
+    position: absolute;
+    bottom: 0;
+    /* background-color: aliceblue; */
+}
+
 li { list-style-image: url("../../Images/Svg/welleInc.svg"); } 

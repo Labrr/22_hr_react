@@ -1,20 +1,9 @@
 import React, {useState} from 'react';
 import './SideMenu.css'
 import Calendar from '../Components/Calendar/Calendar';
-import Player from '../Components/Player';
-import { NextUpPreview } from '../Components/NextUpPreview/NextUpPreview';
+import AudioPlayer from '../Components/AudioPlayer/AudioPlayer';
+// import { NextUpPreview } from '../Components/NextUpPreview/NextUpPreview';
 
-function Calendar_(props) { 
-  const [ open, setOpen ] = useState(true);
-
-  return(
-    <div>
-      <a href='#' className='calendar-btn' onClick={() => setOpen(!open)}>
-      </a>
-      { open && props.children }
-    </div>
-  ) 
-}
 
 function SideMenu({children, isLoaded, weekEvents, error}) {
   
@@ -24,7 +13,10 @@ function SideMenu({children, isLoaded, weekEvents, error}) {
   return(
     <div className={open ? `SideMenu calVis` : `SideMenu` } >    
       <div className="play">
-          <Player url="https://halloradi0.out.airtime.pro/halloradi0_a"/>
+          {/* <Player url="https://halloradi0.out.airtime.pro/halloradi0_a"/> */}
+          {/* <Player url="https://soundcloud.com/suteropace/bugcity"/> */}
+   
+
         </div>
         {children}
         
@@ -40,10 +32,10 @@ function SideMenu({children, isLoaded, weekEvents, error}) {
           </div>
         </div>
         
-        <NextUpPreview week={isLoaded ?  weekEvents : false}/>
+        {/* <NextUpPreview week={isLoaded ?  weekEvents : false}/> */}
       
 
-        <Calendar week={true ?  weekEvents : false} error={error} />
+        <Calendar week={isLoaded ?  weekEvents : false} error={error} />
     </div>
   )  
 }

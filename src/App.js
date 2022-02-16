@@ -1,11 +1,12 @@
-import './App.css';
 import './Components/Calendar/Calendar.css';
 import { React, useState, useEffect } from 'react';
 
-import { BackgroundVisual } from './Components/ThreeVisuals/BackgroundVisual';
+import { BackgroundVisual } from './Components/BackgroundVisual/BackgroundVisual';
+import Calendar from './Components/Calendar/Calendar';
+import Weekday from './Components/Weekday/Weekday';
+import { Preview } from './Components/NextUpPreview/NextUpPreview';
+import AudioPlayer from './Components/AudioPlayer/AudioPlayer'
 
-//Images
-import SideMenu from './Pages/SideMenu';
 import axios from 'axios';
 
 
@@ -42,7 +43,7 @@ function App() {
       setIsLoaded(true);
      })
     .catch(function (err) {
-      setError(err)
+      setError(err) 
       setIsLoaded(false)
       return -1;
     })
@@ -82,39 +83,47 @@ function App() {
   }
   function weekStart(currentDate){
     var firstday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 3 )).toUTCString();
-    console.log(firstday, "first")
     return firstday;
   }
 
-  function w() {
-  }
-
-
-  {/* <Player 
-    url="https://t4.bcbits.com/stream/6e4770fb84a399b4566bc5cfd7bc534d/mp3-128/2667551507?p=0&ts=1644232117&t=a657628b4f22e91991cc8fb87015eb8431fdbdee&token=1644232117_539f1162f372b2aa6ecd7ad9cd4e808131b4c1b3"
-  /> */}
-
-  
 
   return (
     <div className="App">
-      <SideMenu isLoaded={isLoaded} weekEvents={weekEvents} error={error}>
-        
-      
-                
-      </SideMenu>
+ 
+      <BackgroundVisual/>
+ 
+      <AudioPlayer url="https://halloradi0.out.airtime.pro/halloradi0_a" />
 
-      <BackgroundVisual />
+      <NavB>
+        <Calendar week={isLoaded ?  weekEvents : false} error={error}/>
+      </NavB>
+
+      <Preview week={isLoaded ?  weekEvents : false}/>
+   
     </div>
   );
 }
 
- 
+
+function NavB(props) {
+  const [ open, setOpen ] = useState(false);
+  
+  
+
+  return(
+      <div className="navbar">
+        <a className='calButton' onClick={() => setOpen(!open)} href='#'>Calendar</a>
+        { open && props.children }
+      </div>
+  )
+
+}
+
+
 function Calendar_(props) {
  
   const [ open, setOpen ] = useState(false);
-
-
+  
   return(
     <div>
       <a href='#' className='calendar-btn' onClick={() => setOpen(!open)}>
@@ -128,10 +137,10 @@ function Calendar_(props) {
 
 
 
+
+
 function CalendarMenu(props) {
   const [clock, setClock] = useState(new Date);
-  // const [ open, setOpen ] = useState(false);
-  // const [count, setCount] = useState(0);
   
   useEffect(() => {
     setClock(new Date)

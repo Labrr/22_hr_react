@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: var(--font);
-  text-rendering: optimizeLegibility;
+  /* text-rendering: optimizeLegibility; */
 }
 
 @font-face {
@@ -15,8 +15,10 @@
   font-family: Cadiz;
   src: url("../public/Font/cadiz-regular-webfont.woff");
 }
+
 :root {
-  --bg: #687da1;
+  --bg: #C35B5A;
+  --bg: #f5a038;
   --bg-accent: #484a4d;
   --evTimeColor: pink;
   --nav-size: 60px;
@@ -30,21 +32,43 @@
 
 
 ul {
-  list-style: none; 
   margin: 0;
   padding: 0;
+ 
 }
 
 a{
-  color: var(--text-color);
+  /* color: var(--text-color); */
   text-decoration: none;
 }
 
+body{
+  overflow: hidden;
+}
+
+
+
 .navbar{
-  height: var(--nav-size);
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  width: 10em;
+  position: absolute;
+  right: 0em;
+  top: 2em;
+  height: 10em;
+  /* height: var(--nav-size);
   background-color: var(--bg);
   padding: 0 1rem;
-  border-bottom: var(--border);
+  border-bottom: var(--border); */
+}
+
+.navbar a{
+  color: #fff;
+  /* margin-right: 1em; */
+  /* width: 10em; */
+  font-size: 32px;
+  z-index: 12;
 }
 
 .navbar-nav {
@@ -72,52 +96,6 @@ a{
   
 }
 
-/* 
-  Calendar -----
-*/
-/* .cal-menu-container {
-  background-color: #fff;
-  width: 100%;
-  min-height: 4em;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-.down {
-  border-width: 0 5px 5px 0;
-  transition: 1s;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-} */
-
-/*
-.cal-menu {
-  width: 100%;
-  height: 4em;
-  background-color: #fff;
-  display: flex;
-  position: absolute;
-  width: calc(100% / 2);
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  bottom: 0em;
-} */
-
-
-/* .dropdown-container{
-  overflow: scroll;
-} */
 
 .dropdown{
   position: absolute;
@@ -132,6 +110,7 @@ a{
   overflow: scroll;
 /* Optional: show position indicator in red */
 }
+
 .dropdown::-webkit-scrollbar {
   display: none;
 }
@@ -145,19 +124,6 @@ a{
   transition: background 300ms;
   padding: 0.5rem;
 }
-
-.dd-menu-item:hover {
-  background-color: violet;
-}
-
-.bg-visual{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background-color: #000;
-}
-
 
 /* 
   reusable css classes

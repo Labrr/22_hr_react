@@ -1,0 +1,96 @@
+.audioPlayer{
+    position: absolute;
+    padding: 1em;
+    /* margin:1em; */
+    grid-area: audio;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* align-items: baseline; */
+    justify-content: space-evenly;
+    top: 2em;
+    width: 20em;
+    /* border:  solid 1px black; */
+    /* max-height: 30em; */
+}
+
+.playButton{
+    width: 8em;
+    height: 8em;
+}
+
+.playButton .play{
+    box-sizing: border-box;
+    border: #000 1em solid;
+    width: 8em;
+    height: 8em;
+    border-width: 4.3em 0px 4.3em 8em;
+    border-color: transparent transparent transparent #000;
+}
+
+.playButton .pause{
+    transition: cubic-bezier(1s);
+    box-sizing: border-box;
+    border: #000 1em solid;
+    background-color: #000;
+    width: 8em;
+    height: 8em;
+    /* border-width: 6em 0px 6em 6em; */
+    border-color: #000;
+
+}
+
+.sliderContainer{
+    /* height: 8em; */
+    width: 8em;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    
+    transition: all ease-out 200ms;
+    opacity: 0;
+}
+.sliderMove{
+    height: 100%;
+}
+/* transform: translateY(-400%); */
+
+.sliderContainer.show{
+    transition: all ease-in 500ms;
+    /* -webkit-transform: translateY(300%);
+    -moz-transform: translateY(300%);
+    -ms-transform: translateY(300%);
+    -o-transform: translateY(300%);
+    transform: translateY(300%); */
+    opacity: 1;
+}
+
+
+.volumeSlider{
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    /* background-image: '../../Images/Svg/welleInc.svg'; */
+    background: #000;
+    width: 100%;
+    height: 0.5em;
+    outline: none; /* Remove outline */
+}
+.volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 1em; /* Set a specific slider handle width */
+    height: 3em; /* Slider handle height */
+    background: #000; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.volumeSlider::-moz-range-thumb {
+      width: 1em; /* Set a specific slider handle width */
+      height: 3em; /* Slider handle height */
+      background: #000; 
+      border-radius: 0;
+      border-color: transparent;
+      cursor: pointer; /* Cursor on hover */
+  }

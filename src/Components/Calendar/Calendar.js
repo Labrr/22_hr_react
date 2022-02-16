@@ -10,7 +10,9 @@ export default function Calendar( { week, error } ) {
     if(week && week.length > 0){
       setLoading(true)      
     }
-    
+      
+
+
     return () => {
     };
   }, [week]);
