@@ -10,16 +10,15 @@ import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { shaderMaterial } from '@react-three/drei/core/useGLTF'
 
-
 import './BackgroundVisual.css'
 
-import Objecto from './arterien.glb'
-
+// import Objecto from './arterien.glb'
 
 const textProps = {
   fontSize: 3.9,
   font: '../public/Font/Georama/Georama-Medium.ttf'
 }
+
 
 function Title({ layers = undefined, ...props }) {
   const group = useRef()
@@ -29,9 +28,18 @@ function Title({ layers = undefined, ...props }) {
 
   return (
     <group {...props} ref={group}>
-      <Text depthTest={false} material-toneMapped={false} {...textProps} layers={layers}>
+      <Text depthTest={false} material-toneMapped={true} {...textProps} layers={layers}>
         HALLO:Radio
+        {props.inpText}
+        <MeshDistortMaterial
+              color="white"
+              attach="material"
+              // wireframe={true}
+              distort={0} // Strength, 0 disables the effect (default=1)
+              speed={0.6} // Speed (default=1)
+            />
       </Text>
+     
     </group>
   )
 }
@@ -64,7 +72,13 @@ function Boxxx() {
   return (
     <mesh>
       <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color="hotpink" />
+      {/* <meshLambertMaterial attach="material" color="hotpink" /> */}
+      <MeshDistortMaterial
+              color="hotpink"
+              attach="material"
+              distort={1} // Strength, 0 disables the effect (default=1)
+              speed={1} // Speed (default=1)
+            />
     </mesh>
   );
 }
@@ -108,14 +122,14 @@ function Grid() {
   return spheres;
 }
 
-function Ggg() {
-  const gltf = useLoader(GLTFLoader, Objecto)
-  return (
-    <Suspense fallback={null}>
-      <primitive object={gltf.scene} />
-    </Suspense>
-  )
-}
+// function Ggg() {
+//   const gltf = useLoader(GLTFLoader, Objecto)
+//   return (
+//     <Suspense fallback={null}>
+//       <primitive object={gltf.scene} />
+//     </Suspense>
+//   )
+// }
 
 
 export function BackgroundVisual(){
@@ -127,8 +141,8 @@ export function BackgroundVisual(){
           <Stars />
           <ambientLight  intensity={1}/>
           <OrbitControls />
-            {/* <Ggg /> */}
-          <Title />
+          {/* <Boxxx /> */}
+          <Title inpText=""/>
          </Canvas>
       </div>
     )

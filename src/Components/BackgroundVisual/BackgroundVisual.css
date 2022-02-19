@@ -4,7 +4,7 @@
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    background-color: #f5a038;
+    /* background-color: #122680; */
     background-color: var(--bg);
   }
   

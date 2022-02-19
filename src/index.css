@@ -18,7 +18,13 @@
 
 :root {
   --bg: #C35B5A;
+  --bg: #000;
+  --bg: #122680;
   --bg: #f5a038;
+  --bg-cal: rgb(24, 194, 115);
+  --play-col: rgb(143, 16, 182);
+  --play-col: rgb(184, 41, 41);
+
   --bg-accent: #484a4d;
   --evTimeColor: pink;
   --nav-size: 60px;
@@ -29,7 +35,10 @@
   --font: Cadiz;
 }
 
-
+.marqu{
+  color: #fff;
+  font-size: 46px;
+}
 
 ul {
   margin: 0;
@@ -131,6 +140,3 @@ body{
 .translateUp{
   transform: translateY(100%);
 }
-
-
-

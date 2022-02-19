@@ -21,22 +21,22 @@
 
 .playButton .play{
     box-sizing: border-box;
-    border: #000 1em solid;
+    border: var(--play-col) 1em solid;
     width: 8em;
     height: 8em;
     border-width: 4.3em 0px 4.3em 8em;
-    border-color: transparent transparent transparent #000;
+    border-color: transparent transparent transparent var(--play-col);
 }
 
 .playButton .pause{
     transition: cubic-bezier(1s);
     box-sizing: border-box;
-    border: #000 1em solid;
-    background-color: #000;
+    border: var(--play-col) 1em solid;
+    /* background-color: var(--play-col); */
     width: 8em;
     height: 8em;
     /* border-width: 6em 0px 6em 6em; */
-    border-color: #000;
+    border-color: var(--play-col);
 
 }
 
@@ -72,7 +72,7 @@
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     /* background-image: '../../Images/Svg/welleInc.svg'; */
-    background: #000;
+    background: var(--play-col);
     width: 100%;
     height: 0.5em;
     outline: none; /* Remove outline */

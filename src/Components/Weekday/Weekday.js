@@ -31,9 +31,9 @@ function Weekday({ daysEvents, day }) {
         <h2>{dayString}</h2>
       
         {daysEvents.map(show => (
-              <li key={show.start}> 
-                <span className="evTime">{dateToTimeString(show.start)}</span>  
-                <span className="evName" > {show.summary}</span>     
+              <li className='evDay' key={show.start}> 
+                  <ul className="evTime">{dateToTimeString(show.start)}</ul>  
+                  <ul className="evName" > {show.summary}</ul>     
               </li>
             ))}
 

@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { ReactComponent as PlayIcon } from '../Images/Svg/play.svg'
-// import { ReactComponent as PauseIcon } from '../Images/Svg/pause.svg'
-// import PlayLogo from '../Images/Svg/play.svg'
-// import PauseLogo from '../Images/Svg/pause.svg'
 import './AudioPlayer.css'
 import axios from "axios";
 //   const [audio] = useState(new Audio(url));
@@ -61,7 +57,6 @@ const AudioPlayer = ({ url }) => {
 
 
   function getAudioStream(){
-    console.log("gogostrea,m")
     axios.get(url)
     .then(function (response) {
       // handle success
@@ -77,11 +72,11 @@ const AudioPlayer = ({ url }) => {
   return (
     <div className="audioPlayer">
       <div className="playButton" onClick={() => setPlay(!play)}>
-          <div className={play ? "play" : "pause"} />
+          <div className={play ?  "pause" : "play"} />
       </div>
       
 
-       <div className={play ? "sliderContainer" : "sliderContainer show"}>
+       <div className={play ? "sliderContainer show" : "sliderContainer"}>
       {/* <div className="sliderMove"> */}
 
        

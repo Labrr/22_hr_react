@@ -3,12 +3,12 @@ import { React, useState, useEffect } from 'react';
 
 import { BackgroundVisual } from './Components/BackgroundVisual/BackgroundVisual';
 import Calendar from './Components/Calendar/Calendar';
-import Weekday from './Components/Weekday/Weekday';
 import { Preview } from './Components/NextUpPreview/NextUpPreview';
 import AudioPlayer from './Components/AudioPlayer/AudioPlayer'
 
-import axios from 'axios';
+import Marquee from "react-fast-marquee";
 
+import axios from 'axios';
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
   }, []);
 
   function getEvents(start, end) {
-    axios.get(`http://localhost:8080/api/calendar/${ start} / ${ end }`)
+    axios.get(`http://localhost:5001/calendar/${ start} / ${ end }`)
     .then(function (response) {
       // handle success
       const weekDataRaw = response.data;
@@ -91,7 +91,15 @@ function App() {
     <div className="App">
  
       <BackgroundVisual/>
- 
+
+
+      <Marquee 
+        className="marqu"
+        gradient={false}
+        pauseOnClick={true}
+      >
+          HALLLLLLO
+      </Marquee>
       <AudioPlayer url="https://halloradi0.out.airtime.pro/halloradi0_a" />
 
       <NavB>

@@ -1,27 +1,50 @@
-span.evTime{
+/* span.evTime{
     color: --var(--evTimeColor);
     color:aliceblue;
     font-size: 3em;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 1.5px;
-}
+} */
 
-span.evName{
+/* .evTime{
+    color: #fff;
+} */
+
+ul.evName{
     /* background-color: #fff; */
+    padding-left: 1em;
     font-size: 3em;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 1.5px;
     transition: ease-out 300ms;
-    cursor: pointer;
+    cursor: default;
 }
-span.evName:hover{
-
+.evDay:hover ~ .evTime{
+    
     /* -webkit-text-fill-color: #fff; */
     font-size: 3em;
     -webkit-text-fill-color: #fff;
     -webkit-text-stroke-width: 1.5px;
 }
 
+li.evDay:hover .evTime{
+    transition: all 800ms;
+    color: aquamarine;
+}
+
 .weekday{
     border-top: 2px solid blanchedalmond;
 }
+
+.weekday li{
+    padding-left: 1em;
+}
+
+.weekday li:hover ~ ul.evTime{
+    color: aqua    
+
+}
+/* 
+.weekday .evName:hover{
+    color: #fff;
+} */

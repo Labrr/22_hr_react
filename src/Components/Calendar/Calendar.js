@@ -11,8 +11,6 @@ export default function Calendar( { week, error } ) {
       setLoading(true)      
     }
       
-
-
     return () => {
     };
   }, [week]);
