@@ -1,9 +1,8 @@
-import React, {useState, useEffect } from 'react'
+import {useState, useEffect } from 'react'
 import Weekday from '../Weekday/Weekday';
 import  './Calendar.css';
 
-
-export default function Calendar( { week, error } ) {
+export default function Calendar( { week, error, active } ) {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -23,16 +22,18 @@ export default function Calendar( { week, error } ) {
   } else {
      
     return(
+      
       <div className="cal-container">
-        <div className="calendar">
-            {doit(week)}
+     
+          <div className="calendar">
+              {sortWeek(week)}
           </div>
       </div>
     );
   }
 }
 
-function doit(week) {
+function sortWeek(week) {
   const weekComp = [];
   for (let i = 0; i < week.length; i++) {
       const daysEvents = week[i];

@@ -1,24 +1,38 @@
 
-import { React, Suspense, useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, Suspense } from 'react';
 
 
 import * as THREE from 'three'
-import { Canvas } from '@react-three/fiber';
-import {Stars, Box, OrbitControls, useFBX, MeshDistortMaterial, Text } from "@react-three/drei"
-
-import { useLoader } from '@react-three/fiber'
+import { Canvas, useLoader} from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { shaderMaterial } from '@react-three/drei/core/useGLTF'
+import {Stars, Stage, Box, OrbitControls, useFBX,GradientTexture, MeshDistortMaterial, Text } from "@react-three/drei"
 
 import './BackgroundVisual.css'
 
-// import Objecto from './arterien.glb'
+import Model from './Model/Model';
 
 const textProps = {
   fontSize: 3.9,
-  font: '../public/Font/Georama/Georama-Medium.ttf'
+  // font: '../public/Font/Georama/Georama-Medium.ttf'
 }
 
+
+
+function TCal({ layers = undefined, ...props }) {
+  const group = useRef()
+  useEffect(() => {
+    group.current.lookAt(0, 0, 0)
+  }, [])
+       
+  return (
+    <group {...props} ref={group}>
+      <Text depthTest={false} material-toneMapped={true} {...textProps} layers={layers}>
+        {props.name}
+      </Text>
+     
+    </group>
+  )
+}
 
 function Title({ layers = undefined, ...props }) {
   const group = useRef()
@@ -30,14 +44,24 @@ function Title({ layers = undefined, ...props }) {
     <group {...props} ref={group}>
       <Text depthTest={false} material-toneMapped={true} {...textProps} layers={layers}>
         HALLO:Radio
-        {props.inpText}
+
         <MeshDistortMaterial
               color="white"
               attach="material"
               // wireframe={true}
-              distort={0} // Strength, 0 disables the effect (default=1)
-              speed={0.6} // Speed (default=1)
-            />
+              distort={0.} // Strength, 0 disables the effect (default=1)
+              speed={0.2} // Speed (default=1)
+    >
+              <GradientTexture
+             
+      stops={[0, 1]} // As many stops as you want
+      colors={['blue', 'purple']} // Colors need to match the number of stops
+      colors={['blue', 'purple']} // Colors need to match the number of stops
+      size={512} // Size is optional, default = 1024
+    />
+            
+            </MeshDistortMaterial>
+
       </Text>
      
     </group>
@@ -60,25 +84,14 @@ function TitleCopies({ layers }) {
   )
 }
 
-function Scene() {
-  return (
-    <group name="sceneContainer">
-      <TitleCopies />
-    </group>
-  )
-}
+
 
 function Boxxx() {
   return (
     <mesh>
       <boxBufferGeometry attach="geometry" />
       {/* <meshLambertMaterial attach="material" color="hotpink" /> */}
-      <MeshDistortMaterial
-              color="hotpink"
-              attach="material"
-              distort={1} // Strength, 0 disables the effect (default=1)
-              speed={1} // Speed (default=1)
-            />
+      <meshStandardMaterial dithering={true} color={"red"} />
     </mesh>
   );
 }
@@ -86,6 +99,7 @@ function Boxxx() {
 const Fallback = () => (
   <Boxxx />
 );
+
 const Sphere = (props) => {
   return (
     <mesh position={props.position}>
@@ -112,7 +126,7 @@ function Grid() {
         />
           <MeshDistortMaterial
               attach="material"
-              distort={1} // Strength, 0 disables the effect (default=1)
+              distort={0} // Strength, 0 disables the effect (default=1)
               speed={1} // Speed (default=1)
             />
         </mesh>
@@ -122,27 +136,47 @@ function Grid() {
   return spheres;
 }
 
-// function Ggg() {
-//   const gltf = useLoader(GLTFLoader, Objecto)
-//   return (
-//     <Suspense fallback={null}>
-//       <primitive object={gltf.scene} />
-//     </Suspense>
-//   )
-// }
+function Scene() {
+  const gltf = useLoader(GLTFLoader, Model)
+  return ( 
+    <Suspense fallback={null}>
+      <primitive object={gltf.scene} />
+    </Suspense>
+  )
+}
 
-
-export function BackgroundVisual(){
+export function BackgroundVisual({week}){
+  const ref = useRef()
+  
   return(
 
     <div className="bg-visual"> 
     
         <Canvas>
+
+        <Suspense fallback={<Title scale={12} position={[0, 0, 0]} inpText=""/>}>
+        <Stage controls={ref} preset="rembrandt" intensity={1}  environment="city">
+          <Model scale={2} >
+
+          </Model>
+        </Stage>
+      </Suspense>
+
+
           <Stars />
-          <ambientLight  intensity={1}/>
+          {/* <ambientLight  intensity={0.}/> */}
           <OrbitControls />
-          {/* <Boxxx /> */}
-          <Title inpText=""/>
+
+          {/* <TCal name=
+          {week ? 
+            "ahhh"
+            // console.log(week[0][0].summary)
+            :
+            "loading..." 
+          }
+          /> */}
+
+          
          </Canvas>
       </div>
     )

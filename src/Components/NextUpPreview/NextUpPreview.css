@@ -14,4 +14,31 @@
     /* background-color: aliceblue; */
 }
 
+div.preview + weekday{
+    background-color: aliceblue;
+}
+
+.preview:hover{
+    /* opacity: 0.5; */
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke-width: 1.5px;
+    transition: all 2s;
+    cursor: pointer;
+}
+
+.preview{
+    transition: all 2s;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+    color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+    .preview{
+        height: auto;
+        width: 100%;
+        overflow: scroll;
+    }
+}
+
 li { list-style-image: url("../../Images/Svg/welleInc.svg"); } 

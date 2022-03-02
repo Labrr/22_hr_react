@@ -1,15 +1,16 @@
 import './Components/Calendar/Calendar.css';
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { BackgroundVisual } from './Components/BackgroundVisual/BackgroundVisual';
 import Calendar from './Components/Calendar/Calendar';
 import { Preview } from './Components/NextUpPreview/NextUpPreview';
 import AudioPlayer from './Components/AudioPlayer/AudioPlayer'
+import Home from './Routes/Home'
 
-import Marquee from "react-fast-marquee";
+import moment from 'moment'
 
+import NavBar from './Nav';
 import axios from 'axios';
-
 
 function App() {
 
@@ -21,12 +22,24 @@ function App() {
   useEffect(() => {
     let isApiSubscribed = true;
     if(isApiSubscribed){ 
-        let date = new Date();
-        getEvents(
-            weekStart(date),
-            weekEnd(date)
-            ); 
+      let date = new Date();
+      //todo useMEMO
+      // getEvents(
+      //   weekStart(date),
+      //   weekEnd(date)
+      //   ); 
+      // }
+
+      var startOfWeek = moment().startOf('isoWeek').toDate();
+      var endOfWeek   = moment().endOf('isoWeek').toDate();
+      
+      getEvents(
+        startOfWeek,
+        endOfWeek
+        ); 
       }
+      
+
       //cleanup
       return () => {
         // cancel the subscription
@@ -34,8 +47,9 @@ function App() {
     };
   }, []);
 
+
   function getEvents(start, end) {
-    axios.get(`http://localhost:5001/calendar/${ start} / ${ end }`)
+    axios.get(`https://api.lasseborntraeger.de/calendar/${ start} / ${ end }`)
     .then(function (response) {
       // handle success
       const weekDataRaw = response.data;
@@ -48,6 +62,7 @@ function App() {
       return -1;
     })
   }
+
 
 
   function filterDay(week, day) {
@@ -78,7 +93,6 @@ function App() {
 
   function weekEnd(currentDate){
     var lastday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 7)).toUTCString();
-    console.log(lastday, "last")
     return lastday;
   }
   function weekStart(currentDate){
@@ -89,79 +103,34 @@ function App() {
 
   return (
     <div className="App">
- 
-      <BackgroundVisual/>
+     
+      <NavBar>
+        <Calendar active={true} week={isLoaded ?  weekEvents : false} error={error}/>
+
+        <Home name="info"/>
+
+      </NavBar>
 
 
-      <Marquee 
+
+      <BackgroundVisual week={isLoaded ?  weekEvents : false}/>
+
+
+
+      {/* <Marquee 
         className="marqu"
         gradient={false}
         pauseOnClick={true}
       >
           HALLLLLLO
-      </Marquee>
-      <AudioPlayer url="https://halloradi0.out.airtime.pro/halloradi0_a" />
-
-      <NavB>
-        <Calendar week={isLoaded ?  weekEvents : false} error={error}/>
-      </NavB>
-
+      </Marquee> */}
+      
+     
       <Preview week={isLoaded ?  weekEvents : false}/>
+
    
     </div>
   );
-}
-
-
-function NavB(props) {
-  const [ open, setOpen ] = useState(false);
-  
-  
-
-  return(
-      <div className="navbar">
-        <a className='calButton' onClick={() => setOpen(!open)} href='#'>Calendar</a>
-        { open && props.children }
-      </div>
-  )
-
-}
-
-
-function Calendar_(props) {
- 
-  const [ open, setOpen ] = useState(false);
-  
-  return(
-    <div>
-      <a href='#' className='calendar-btn' onClick={() => setOpen(!open)}>
-        <div>Calendar {open ? <i className="arrow down"></i> : <i className="arrow"></i> }</div>
-      </a>
-      { open && props.children }
-    </div>
-
-  ) 
-}
-
-
-
-
-
-function CalendarMenu(props) {
-  const [clock, setClock] = useState(new Date);
-  
-  useEffect(() => {
-    setClock(new Date)
-    
-  }, []);
- 
-  return(
-    <div className='cal-menu-container'>
-      <div className="cal-menu">
-        { props.children }
-      </div>
-    </div>
-  )
 }
 
 

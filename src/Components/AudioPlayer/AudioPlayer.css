@@ -1,30 +1,28 @@
 .audioPlayer{
-    position: absolute;
-    padding: 1em;
-    /* margin:1em; */
+   /* background-color: blanchedalmond; */
+    /* padding: 1em; */
     grid-area: audio;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* align-items: baseline; */
     justify-content: space-evenly;
-    top: 2em;
-    width: 20em;
-    /* border:  solid 1px black; */
-    /* max-height: 30em; */
+    width: 14em;
+    height: 5em;
 }
 
 .playButton{
-    width: 8em;
-    height: 8em;
+
+    /* background-color: blueviolet; */
+    width: 5em;
+    height: 5em;
 }
 
 .playButton .play{
     box-sizing: border-box;
     border: var(--play-col) 1em solid;
-    width: 8em;
-    height: 8em;
-    border-width: 4.3em 0px 4.3em 8em;
+    width: 5em;
+    height: 5em;
+    border-width: 2.3em 0px 2.3em 4.3em;
     border-color: transparent transparent transparent var(--play-col);
 }
 
@@ -32,9 +30,9 @@
     transition: cubic-bezier(1s);
     box-sizing: border-box;
     border: var(--play-col) 1em solid;
-    /* background-color: var(--play-col); */
-    width: 8em;
-    height: 8em;
+    background-color: var(--play-col);
+    width: 5em;
+    height: 5em;
     /* border-width: 6em 0px 6em 6em; */
     border-color: var(--play-col);
 
@@ -42,7 +40,7 @@
 
 .sliderContainer{
     /* height: 8em; */
-    width: 8em;
+    width: 5em;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -80,16 +78,17 @@
 .volumeSlider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 1em; /* Set a specific slider handle width */
-    height: 3em; /* Slider handle height */
-    background: #000; /* Green background */
+    width: 0.8em; /* Set a specific slider handle width */
+    height: 2em; /* Slider handle height */
+    background: var(--play-col); /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
 .volumeSlider::-moz-range-thumb {
-      width: 1em; /* Set a specific slider handle width */
-      height: 3em; /* Slider handle height */
-      background: #000; 
+      width: 0.8em; /* Set a specific slider handle width */
+      height: 2em; /* Slider handle height */
+      background: var(--play-col); 
+      background: var(--play-col);
       border-radius: 0;
       border-color: transparent;
       cursor: pointer; /* Cursor on hover */

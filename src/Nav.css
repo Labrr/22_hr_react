@@ -1,0 +1,158 @@
+.main-menu{
+  /* border: solid #fff 1px; */
+  height: 7em;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  font-size: 16px;
+  color: var(--font-col);
+  /* background-color: var(--bg); */
+}
+
+.main-menu::-webkit-scrollbar {
+  display: none;
+}
+.menu-dd::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-btn{
+  display: flex;
+  justify-content: space-around;
+  font-size: 2em;
+  /* -webkit-text-fill-color: #fff; */
+  width: 10em;
+}
+
+.menu-btn a{
+  color: var(--font-col);
+  /* -webkit-text-stroke-width: 1.5px; */
+}
+
+.menu-btn a:hover{
+  /* -webkit-text-fill-color: transparent; */
+
+  /* -webkit-text-fill-color: ; */
+  -webkit-text-stroke-width: none;
+}
+
+.menu-dd{
+  /* background-color: var(--bg); */
+  padding: 0em 10em 0em 10em;
+  
+  margin-top: 0em;
+  height: 0em;
+  overflow: scroll;
+  /* position: relative; */
+}
+
+
+.menu-dd-appear {
+  transition: all ease 1s;
+  margin-top: 10em;
+  opacity: 0;
+}
+
+.dd-entering{
+  height: 0em;
+  padding-top: 0em;
+}
+.dd-entered{
+  transition: all ease;
+  /* height: 100vh; */
+}
+
+
+/* .dd-enter-active .calendar{
+  transition: all ease;
+  height: 100vh;
+} */
+
+.dd-exit {
+  transition: all ease 1s;
+  height: 90vh;
+}
+
+.dd-exit-active {
+  transition: all ease 1s;
+  height: 0em;
+}
+
+
+.mainNav{
+  /* position: fixed; */
+  height: 4em;
+  /* transition: all 1s; */
+  background-color: #fff;
+  transition: height ease-in 2s;
+}
+
+
+.dropdown{
+  display: flex;
+}
+
+.my-node-enter{
+  opacity: 0;
+  /* transform: translateY(-140%); */
+  height: 0vh;
+}
+.my-node-enter-active{
+  
+  /* transform: translateY(0%); */
+  transition: all 2s ease;
+  height: 100vh;
+  opacity: 1;
+}
+
+.my-node-exit{
+  opacity: 1;
+  height: 0vh;
+}
+.my-node-exit-active{
+  transition: all 1s ease;
+  opacity: 0;
+  height: 0vh;
+}
+
+.node{
+  width: 100vw;
+}
+
+
+.menu-leave{
+
+}
+
+.mainNav{
+  display: flex;
+  
+  justify-content:flex-end;
+  
+  /* background-color: transparent; */
+  /* transition: 11s; */
+  transition: height ease-in 2s; 
+}
+
+.menuBtn{
+  color: black;
+  position: relative;
+}
+
+.menuContent{
+  background-color: transparent;
+}
+
+.navItem{
+  background-color: #fff;
+  transition: height ease-in 800ms;
+  height: 4em;
+}
+
+.openHeight{
+  height: 100vh;
+
+  transition: all ease-in-out 2s;
+}

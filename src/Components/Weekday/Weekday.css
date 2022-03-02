@@ -34,6 +34,8 @@ li.evDay:hover .evTime{
 
 .weekday{
     border-top: 2px solid blanchedalmond;
+    color: #fff;
+    color: var(--font-col);
 }
 
 .weekday li{
@@ -48,3 +50,16 @@ li.evDay:hover .evTime{
 .weekday .evName:hover{
     color: #fff;
 } */
+
+
+@media only screen and (max-width: 600px) {
+    canvas {
+        /* background-color: lightblue; */
+    }
+    .preview{
+        border-top: aliceblue 2px solid;
+    }
+    ul.evName{
+        /* -webkit-text-fill-color: #000; */
+    }
+}

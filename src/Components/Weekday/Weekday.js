@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Weekday.css'
 
 function Weekday({ daysEvents, day }) {
@@ -7,9 +7,6 @@ function Weekday({ daysEvents, day }) {
     return d.toLocaleDateString('en-EN', { weekday: 'long' })
   }
 
-  function dayOfWeekAsString(dayIndex) {
-    return ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dayIndex] || '';
-  }
   function shortDayOfWeekAsString(dayIndex) {
     return ["SUN", "MON","TUE","WED","THU","FRI","SAT","HIDE"][dayIndex] || '';
   }
@@ -25,17 +22,21 @@ function Weekday({ daysEvents, day }) {
     return <div> Laden, laden, laden...</div>;
   } else {
     const dayString = shortDayOfWeekAsString(day);
-   
+    
     return(
       <div className="weekday" id={dayString}>
         <h2>{dayString}</h2>
-      
-        {daysEvents.map(show => (
-              <li className='evDay' key={show.start}> 
+
+        {daysEvents.map((show, index) => (
+            
+            show.summary !== 'FREI' ?
+                <li className='evDay' key={index}> 
                   <ul className="evTime">{dateToTimeString(show.start)}</ul>  
                   <ul className="evName" > {show.summary}</ul>     
-              </li>
-            ))}
+                </li>
+                :
+                ""
+              ))}
 
       </div>
   )

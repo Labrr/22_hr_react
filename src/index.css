@@ -18,12 +18,17 @@
 
 :root {
   --bg: #C35B5A;
-  --bg: #000;
-  --bg: #122680;
   --bg: #f5a038;
+  --bg: #122680;
+  --bg: rgb(184, 41, 41);
+  --bg: #000;
   --bg-cal: rgb(24, 194, 115);
+  --bg-cal: rgb(184, 41, 41);
   --play-col: rgb(143, 16, 182);
+  --play-col: rgb(90, 7, 65);
   --play-col: rgb(184, 41, 41);
+  --font-col: #663399;
+  --font-col: rgb(184, 41, 41);
 
   --bg-accent: #484a4d;
   --evTimeColor: pink;
@@ -105,38 +110,3 @@ body{
   
 }
 
-
-.dropdown{
-  position: absolute;
-  bottom: 64px;
-  width: 300px;
-  background-color: var(--bg-menu);
-  height: 100vh;
-  width: 100%;
-  /* z-index: -1; */
-  /* transform: translateY(100%); */
-  /* overflow: auto; */
-  overflow: scroll;
-/* Optional: show position indicator in red */
-}
-
-.dropdown::-webkit-scrollbar {
-  display: none;
-}
-
-
-.dd-menu-item{
-  height: 50px;
-  display: flex;
-  bottom: 0;
-  align-items: center;
-  transition: background 300ms;
-  padding: 0.5rem;
-}
-
-/* 
-  reusable css classes
-*/
-.translateUp{
-  transform: translateY(100%);
-}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import './SideMenu.css'
 import Calendar from '../Components/Calendar/Calendar';
 import AudioPlayer from '../Components/AudioPlayer/AudioPlayer';
@@ -13,7 +13,7 @@ function SideMenu({children, isLoaded, weekEvents, error}) {
   return(
     <div className={open ? `SideMenu calVis` : `SideMenu` } >    
       <div className="play">
-          {/* <Player url="https://halloradi0.out.airtime.pro/halloradi0_a"/> */}
+          <Player url="https://halloradi0.out.airtime.pro/halloradi0_a"/>
           {/* <Player url="https://soundcloud.com/suteropace/bugcity"/> */}
    
 

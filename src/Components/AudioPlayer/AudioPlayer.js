@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import './AudioPlayer.css'
 import axios from "axios";
 //   const [audio] = useState(new Audio(url));
@@ -46,7 +46,9 @@ const AudioPlayer = ({ url }) => {
   );
   
   function handleAudioToggle(){
-    play ? audio.load() && audio.play() : audio.pause();
+    
+    play ?  audio.play()
+    : audio.pause();
 
   }
   
