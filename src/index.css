@@ -26,7 +26,13 @@
   --bg-cal: rgb(184, 41, 41);
   --play-col: rgb(143, 16, 182);
   --play-col: rgb(90, 7, 65);
-  --play-col: rgb(184, 41, 41);
+  --play-col: rgb(184, 41, 41)75;
+  --play-col: #75f94d;
+  --pri-main-col: #75f94d;
+  --sec-main-col: rgb(229, 63, 233);
+  
+  
+  
   --font-col: #663399;
   --font-col: rgb(184, 41, 41);
 
@@ -39,11 +45,15 @@
   --bg-menu: #fff;
   --font: Cadiz;
 }
-
-.marqu{
-  color: #fff;
-  font-size: 46px;
+.App{
+  overflow: hidden;
 }
+
+
+.text-sec-col{
+  color: var(--sec-main-col);
+}
+
 
 ul {
   margin: 0;

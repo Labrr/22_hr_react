@@ -25,11 +25,11 @@ function Weekday({ daysEvents, day }) {
     
     return(
       <div className="weekday" id={dayString}>
-        <h2>{dayString}</h2>
-
+        <h2 className="dayHead"><i>{dayString}</i></h2>
+        <div className="evContainer">
         {daysEvents.map((show, index) => (
-            
-            show.summary !== 'FREI' ?
+          
+          show.summary !== 'FREI' ?
                 <li className='evDay' key={index}> 
                   <ul className="evTime">{dateToTimeString(show.start)}</ul>  
                   <ul className="evName" > {show.summary}</ul>     
@@ -37,6 +37,7 @@ function Weekday({ daysEvents, day }) {
                 :
                 ""
               ))}
+          </div>
 
       </div>
   )

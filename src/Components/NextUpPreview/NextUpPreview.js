@@ -40,17 +40,11 @@ export function Preview( {week, day} ){
         let startTimeShow = moment(daysEvent.start)
         let endTimeShow = moment(daysEvent.end)
 
-        // console.log(startTimeShow.getHours() + " == " + today.getHours() )
-        // if(startTimeShow.getHours() === 16){
-        //   show = daysEvent;
-        // console.log(moment(new Date()));
         if(moment(new Date()).isBetween(startTimeShow, endTimeShow)){
           show = daysEvent
         }
-          // console.log(startTimeShow - endTimeShow)
-        // } 
+         
     });
-
     return show;  
   }
   }
@@ -59,7 +53,7 @@ export function Preview( {week, day} ){
     <div className="preview">
       <DdPreview rest={<Weekday daysEvents={week[prevDay]} day={prevDay} />} />
         
-      <div>{nextOrCurrShow ? nextOrCurrShow.summary : "loading"}</div>
+      <div className='previewAct'> <i>{nextOrCurrShow ? nextOrCurrShow.summary : "loading"} </i></div>
           
     </div>
   )
@@ -70,7 +64,7 @@ function DdPreview({rest}){
 
   return(
     <div onClick={ () => setOpen(!open)} className="dpreview" >
-      <h1 >Nextup</h1>
+      <h1> <i> Nextup: </i></h1>
       {open && rest}
     
     </div>

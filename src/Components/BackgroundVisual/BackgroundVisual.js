@@ -85,7 +85,6 @@ function TitleCopies({ layers }) {
 }
 
 
-
 function Boxxx() {
   return (
     <mesh>
@@ -154,12 +153,12 @@ export function BackgroundVisual({week}){
     
         <Canvas>
 
-        <Suspense fallback={<Title scale={12} position={[0, 0, 0]} inpText=""/>}>
-        <Stage controls={ref} preset="rembrandt" intensity={1}  environment="city">
-          <Model scale={2} >
+        <pointLight position={[0, 10, 10]} />
+        {/* <ambientLight /> */}
 
+        <Suspense fallback={<Title scale={12} position={[0, 0, 0]} inpText=""/>}>
+          <Model position={[0,0,0]}  scale={0.5} >
           </Model>
-        </Stage>
       </Suspense>
 
 

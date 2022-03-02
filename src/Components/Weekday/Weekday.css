@@ -1,65 +1,41 @@
-/* span.evTime{
-    color: --var(--evTimeColor);
-    color:aliceblue;
-    font-size: 3em;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1.5px;
-} */
 
-/* .evTime{
-    color: #fff;
-} */
-
-ul.evName{
-    /* background-color: #fff; */
-    padding-left: 1em;
-    font-size: 3em;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1.5px;
-    transition: ease-out 300ms;
-    cursor: default;
-}
-.evDay:hover ~ .evTime{
-    
-    /* -webkit-text-fill-color: #fff; */
-    font-size: 3em;
-    -webkit-text-fill-color: #fff;
-    -webkit-text-stroke-width: 1.5px;
+li{
+    color: #000;
+    text-decoration: none;
 }
 
-li.evDay:hover .evTime{
-    transition: all 800ms;
-    color: aquamarine;
+.evTime{
+    margin-left: 1em;
+    width: 2.5em;
 }
+
+.evName{
+    margin-left: 1em;
+}
+
+.evContainer{
+    min-height: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.evDay{
+    display: flex;
+}
+
+.dayHead{
+    display: flex;
+    writing-mode: vertical-rl;
+    justify-content: center;
+}
+
 
 .weekday{
-    border-top: 2px solid blanchedalmond;
-    color: #fff;
-    color: var(--font-col);
-}
-
-.weekday li{
-    padding-left: 1em;
-}
-
-.weekday li:hover ~ ul.evTime{
-    color: aqua    
-
-}
-/* 
-.weekday .evName:hover{
-    color: #fff;
-} */
-
-
-@media only screen and (max-width: 600px) {
-    canvas {
-        /* background-color: lightblue; */
-    }
-    .preview{
-        border-top: aliceblue 2px solid;
-    }
-    ul.evName{
-        /* -webkit-text-fill-color: #000; */
-    }
+    margin: 1em;
+    padding-bottom: 1.5em;
+    /* padding: 1em; */
+    display: flex;
+    border-bottom: #000 solid 4px;
 }

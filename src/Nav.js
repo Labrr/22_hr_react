@@ -39,23 +39,28 @@ function NavBar(props){
         
         <AudioPlayer />
         <div className="menu-btn">
-          <a href='#' className="m-btn" onClick={() => menuChange('cal')}>
-            Calendar
+          <a href='#' className="m-btn"  onClick={() => menuChange('cal')}>
+            <i className={ activeMenu === 'cal' ? "text-sec-col" : "" }>
+              Calendar
+            </i>
           </a>
           <a href='#' className="m-btn" onClick={() => menuChange('info')}>
-            Hallo
+            <i>
+              HALLO:
+            </i>
           </a>
         </div>
       </div>
       
      
+      
 
       <CSSTransition
         in={activeMenu === "cal"}
         timeout={1000}
         classNames="dd"
       >
-        <div className={ activeMenu === "cal"? 'menu-dd openHeight' : 'menu-dd '}>
+        <div className={ activeMenu === "cal"? 'menu-dd' : 'menu-dd '}>
           { activeMenu === 'cal'  && props.children[0]}
         </div>
       </CSSTransition>
@@ -65,7 +70,7 @@ function NavBar(props){
         timeout={1000}
         classNames="dd"
         >
-        <div className={ activeMenu === "info"? 'menu-dd openHeight' : 'menu-dd '}>
+        <div className={ activeMenu === "info"? 'menu-dd' : 'menu-dd '}>
           { activeMenu === 'info'  && props.children[1]}
         </div>
       </CSSTransition>

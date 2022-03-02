@@ -1,0 +1,54 @@
+.cal-container{
+   
+    transition: all 4s;
+    overflow-y: scroll;
+}
+
+
+.weekday{
+    /* width: auto; */
+    /* padding: 1em; */
+}
+
+.cal-container::-webkit-scrollbar {
+    display: none;
+}
+
+.calendar::-webkit-scrollbar {
+    display: none;
+}
+
+.calendar{
+    /* position: relative; */
+    /* opacity: 0; */
+    font-family: sans-serif;
+    overflow-y: scroll;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
+    transition: all 1s;
+    display: grid;
+    grid-template-areas: "thu"
+                         "fri"
+                         "sat"
+                         "sun"
+                         "."
+    ;    
+}
+
+div#HIDE{
+    display: none;
+}
+div#THU{
+    grid-area: thu;
+}
+div#FRI{
+    grid-area: fri;
+}
+div#SAT{
+    grid-area: sat;
+}
+div#SUN{
+    grid-area: sun;
+}
+

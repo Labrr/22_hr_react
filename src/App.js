@@ -112,12 +112,13 @@ function App() {
       </NavBar>
 
 
+      {/* <h1>Hallo {moment().startOf('isoWeek').toDate()}</h1> */}
 
       <BackgroundVisual week={isLoaded ?  weekEvents : false}/>
 
 
-
-      {/* <Marquee 
+{/* 
+      <Marquee 
         className="marqu"
         gradient={false}
         pauseOnClick={true}
@@ -125,7 +126,13 @@ function App() {
           HALLLLLLO
       </Marquee> */}
       
-     
+      
+      {/* <AudioPlayer url="https://halloradi0.out.airtime.pro/halloradi0_a" /> */}
+
+      {/* <NavB>
+        <Calendar week={isLoaded ?  weekEvents : false} error={error}/>
+      </NavB> */}
+
       <Preview week={isLoaded ?  weekEvents : false}/>
 
    

@@ -7,7 +7,6 @@
   align-items: center;
   position: fixed;
   font-size: 16px;
-  color: var(--font-col);
   /* background-color: var(--bg); */
 }
 
@@ -27,21 +26,23 @@
 }
 
 .menu-btn a{
-  color: var(--font-col);
+  color: var(--play-col);
   /* -webkit-text-stroke-width: 1.5px; */
+  transition: all 700ms ease;
 }
 
-.menu-btn a:hover{
-  /* -webkit-text-fill-color: transparent; */
-
-  /* -webkit-text-fill-color: ; */
-  -webkit-text-stroke-width: none;
+/* .menu-btn a:hover{
+  color: var(--sec-main-col);
+  transition: all 900ms ease;
+} */
+.menu-btn a:target{
+  color: var(--sec-main-col);
 }
 
 .menu-dd{
   /* background-color: var(--bg); */
   padding: 0em 10em 0em 10em;
-  
+  width: 14em;
   margin-top: 0em;
   height: 0em;
   overflow: scroll;
@@ -121,10 +122,6 @@
   width: 100vw;
 }
 
-
-.menu-leave{
-
-}
 
 .mainNav{
   display: flex;
