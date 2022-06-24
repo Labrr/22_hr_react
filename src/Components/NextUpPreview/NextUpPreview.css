@@ -1,32 +1,68 @@
 .nextup{
     grid-area: nextup;
     width: 30em;
-    min-height: 30em;
-    /* height: 16em; */
-
+    min-height: 34em;
+    min-height: fit-content;
+    border: solid 1px royalblue;
 }
 
 .preview{
-    margin: 1em;
+    z-index: -11;
+    margin: 2em;
     font-size: 1em;
-    position: absolute;
     bottom: 0;
-    /* background-color: aliceblue; */
+    transition: ease 1s all;    
+    position: fixed;
 }
 
-div.preview {
-    color: var(--play-col);
+div.dpreview{ 
+    min-width: calc(fit-content + 2px);
+ }
+
+
+
+.dpreview h1{
+    font-size: 32px;
+}
+
+
+/* 
+.previewAct span strong{
+    margin: 1em;
+} */
+
+.prevTime{
+    margin-right: 1em;
+}
+
+div.dpreview #SUN{
+    padding-bottom: 0;
+}
+
+
+div.dpreview div.weekday{
+    margin: 0;
+    padding: 0;
+    min-height: fit-content;
 
 }
 
-div.preview weekday evDay evTime{
-    color: var(--play-col);
-    
+div.dpreview div.weekday div.evContainer .evDay .evName{
+    font-style: italic; 
+}
+div.dpreview div.weekday div.evContainer .evDay .evTime{
+    margin: 0;
+    font-weight: bold;
+}
+div.dpreview div.weekday div.evContainer .evDay{
+    color: var(--main-col);
+}
+
+div.dpreview div.weekday  h2{
+    display: none;       
 }
 
 .preview:hover{
-    /* opacity: 0.5; */
-    transition: all 2s;
     cursor: pointer;
 }
 
@@ -35,12 +71,3 @@ div.preview weekday evDay evTime{
     color: var(--play-col);
 }
 
-@media only screen and (max-width: 600px) {
-    .preview{
-        height: auto;
-        width: 100%;
-        overflow: scroll;
-    }
-}
-
-li { list-style-image: url("../../Images/Svg/welleInc.svg"); } 

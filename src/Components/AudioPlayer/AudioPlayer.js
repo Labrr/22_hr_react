@@ -1,92 +1,101 @@
 import { useState, useEffect } from "react";
 import './AudioPlayer.css'
-import axios from "axios";
-//   const [audio] = useState(new Audio(url));
-//   const [playing, setPlaying] = useState(false);
+import Marquee from 'react-fast-marquee'
+import PlayButton from "./PlayButton";
+import useFetchAudioInfo from "../../Hooks/useFetchAudioInfo";
+import useFetchLive from "../../Hooks/useFetchLive";
 
-//   const toggle = () => setPlaying(!playing);
-
-
-  
-//   useEffect(() => {
-//       playing ? audio.play() : audio.pause();
-//     },
-//     [playing]
-//   );
-
-//   useEffect(() => {
-//     audio.addEventListener('ended', () => setPlaying(false));
-//     return () => {
-//       audio.removeEventListener('ended', () => setPlaying(false));
-//     };
-//   }, []);
-
-//   return [playing, toggle];
-// };
+export const AudioBanner = ({mobile}) => {
+  const [nextShow, isNow] = useFetchAudioInfo(null);
+  const [live, loading] = useFetchLive();
+  const [banner, setBanner] = useState('loading')
+ 
+useEffect(() => {
+  setBanner(loadBannerContent())
+  return () => {
+  }
+}, [nextShow])
 
 
-
-const AudioPlayer = ({ url }) => {
-  const [play, setPlay] = useState(false);
-  const [audio] = useState(new Audio(url));
-  const [vol, setVol] = useState(100)
-  
-  
-
-  useEffect(() => {
-    handleAudioToggle();
-    
-      console.log(audio.volume)
-      // getAudioStream();
-      return () => {
-        // setPlay(false)
+  const loadBannerContent = () => {
+    if(loading){
+      return "loading"
+    }else if(!live) { 
+      return " NOT ON AIR " 
+    }else{
+      if(isNow){
+        return " " + nextShow.summary + " "
+      }else{
+        return " ON AIR "
+      }
     }
-    },
-    [play]
-  );
-  
-  function handleAudioToggle(){
-    
-    play ?  audio.play()
-    : audio.pause();
+}
 
-  }
-  
-  function handleVolChange(e){
-    setVol(e.target.value)
-    audio.volume = vol/100;
-  }
+  let plus = "+++"
+
+  return(
+    banner !== "loading" ?
+    <Marquee  
+          className="marqueeInfo"
+          pauseOnHover={!live}
+          play={live}
+          gradient={true}
+          gradientWidth={20}
+          gradientColor={[148, 58, 162]}
+        >
+
+         <i>  
+           
+           {
+              plus + banner + plus + banner + plus + banner + plus + banner+ plus + banner + plus + banner
+           }  
+          </i>
+      
+        </Marquee> 
+        :
+        <Marquee
+           className="marqueeInfo"
+        >
+         {
+           banner
+         } 
+        </Marquee>
+  )
+}
 
 
-  function getAudioStream(){
-    axios.get(url)
-    .then(function (response) {
-      // handle success
-      console.log(response)
-     
-    })
-    .catch(function (err) {
-      console.log("error", err)
-    })
 
-  }
+const AudioPlayer = ({mobile, url}) => {
+  const [audioPlay, setAudioPlay] = useState(false);
+  // const [audioElement, loading] = usePlayButton({audioPlay, url})
 
   return (
-    <div className="audioPlayer">
-      <div className="playButton" onClick={() => setPlay(!play)}>
-          <div className={play ?  "pause" : "play"} />
-      </div>
-      
+    <div className={audioPlay ? "audio-container audioOpen" : "audio-container"}>
+    
+      <div className="audioPlayer">
+        <div className="playButton" onClick={() => setAudioPlay(!audioPlay)} >
 
-       <div className={play ? "sliderContainer show" : "sliderContainer"}>
-      {/* <div className="sliderMove"> */}
+          <div className={audioPlay ?  "pause" : "play"} />
 
-       
-            <input type="range" min="0" max="100" value={vol} onChange={handleVolChange}  className="volumeSlider" id="volume"></input>
+            {<PlayButton url={url} btnOn={audioPlay} />}
           </div>
-       </div>
+      
+      </div>
+     
 
-    // </div>
+     {
+        mobile ? 
+        <div className="playInfo show" >
+          <AudioBanner mobile={mobile} />
+      </div>
+      :
+      audioPlay &&
+        <div className={audioPlay? "playInfo show" : "playInfo "}>
+          <AudioBanner mobile={mobile} />
+      </div>
+     }
+     
+    </div>
   );
 };
 

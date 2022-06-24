@@ -8,7 +8,7 @@ function Weekday({ daysEvents, day }) {
   }
 
   function shortDayOfWeekAsString(dayIndex) {
-    return ["SUN", "MON","TUE","WED","THU","FRI","SAT","HIDE"][dayIndex] || '';
+    return ["SUN", "HIDE","HIDE","HIDE","THU","FRI","SAT","HIDE"][dayIndex] || '';
   }
 
   function dateToTimeString(evStart){

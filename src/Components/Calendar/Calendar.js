@@ -1,19 +1,28 @@
 import {useState, useEffect } from 'react'
 import Weekday from '../Weekday/Weekday';
 import  './Calendar.css';
+import moment from 'moment'
 
-export default function Calendar( { week, error, active } ) {
+export default function Calendar( { week, error } ) {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if(week && week.length > 0){
       setLoading(true)      
-    }
-      
+    }    
     return () => {
     };
   }, [week]);
   
+  const getCurrDate = () => {
+    let thu = moment().isoWeekday(4)
+    let sun = moment().isoWeekday(7)
+    return `${thu.date()}.-${sun.date()}.${sun.month()} ` 
+  }
+
+  console.log(
+    getCurrDate()
+  )
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -24,7 +33,7 @@ export default function Calendar( { week, error, active } ) {
     return(
       
       <div className="cal-container">
-     
+          <div className='date'>{getCurrDate()}</div>
           <div className="calendar">
               {sortWeek(week)}
           </div>

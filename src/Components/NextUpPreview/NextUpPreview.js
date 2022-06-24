@@ -2,23 +2,29 @@ import { useState, useEffect} from 'react';
 import Weekday from '../Weekday/Weekday'
 import moment from 'moment'
 import './NextUpPreview.css'
-
+import useFetchAudioInfo from '../../Hooks/useFetchAudioInfo';
+import useFetchLive from '../../Hooks/useFetchLive';
 
 export function Preview( {week, day} ){
 
   const [date] = useState(new Date())
   const [prevDay, setPrevDay] = useState(getNextThuOrToday(date.getDay()))
   const [nextOrCurrShow, setNextOrCurrShow] = useState(false)
-
+  const [ open, setOpen ] = useState(false);
+  const [nextShow, nowPlaying, loading] = useFetchAudioInfo(open);
+  
 
   useEffect(() => {
     if(week.length > 0){
       setNextOrCurrShow(getNextShowOrCurrent(date.getDay()))
-      console.log(nextOrCurrShow)
     }
+    if(open){
+      console.log("open")
+
+    }
+
+  }, [week, open])
   
- 
-  }, [week])
   
 
   function getNextThuOrToday(today) {
@@ -33,40 +39,96 @@ export function Preview( {week, day} ){
     const nextDay = week[prevDay];
     
     var show = nextDay[0];
-    if(today < 3){
-      return show;
-    }else{
+
       nextDay.forEach(daysEvent => {
+        if(show.summary === 'FREI') { show = daysEvent } 
         let startTimeShow = moment(daysEvent.start)
         let endTimeShow = moment(daysEvent.end)
-
-        if(moment(new Date()).isBetween(startTimeShow, endTimeShow)){
+              
+        let now = moment(new Date());
+        if(now.isBetween(startTimeShow, endTimeShow)){
           show = daysEvent
         }
-         
+
     });
     return show;  
+  
   }
+  
+  function dateToTimeString(evStart){
+    let tmp_d = new Date(evStart);
+    let mins = ('0'+tmp_d.getMinutes()).slice(-2);
+    let h = ('0'+tmp_d.getHours()).slice(-2);
+    return h + "" + mins;
   }
 
+  
   return(
-    <div className="preview">
-      <DdPreview rest={<Weekday daysEvents={week[prevDay]} day={prevDay} />} />
-        
-      <div className='previewAct'> <i>{nextOrCurrShow ? nextOrCurrShow.summary : "loading"} </i></div>
-          
-    </div>
-  )
+  
+    <div className="preview" onClick={ () => setOpen(!open)}>
+
+      <DdPreview playing={nowPlaying} open={open} rest={<Weekday daysEvents={week[prevDay]}  day={prevDay} />} />
+      
+      
+
+
+      {!open ?  
+        <div className='previewAct'> <i>
+                
+                {!loading ? 
+                <span> 
+                    <strong className="prevTime">
+                      {dateToTimeString(nextShow.start)}
+                    </strong>
+                    <i>
+                      {nextShow.summary}
+                    </i>
+                  </span>
+                :
+                <span>loading...</span>  
+              }
+                </i>
+                </div>
+      :
+     <></>
+
+      }
+      </div>
+)
 } 
 
-function DdPreview({rest}){
-  const [ open, setOpen ] = useState(false);
+function DdPreview({rest, open}){
+  const [live] = useFetchLive()
+  const [headerOpen, setHeaderOpen] = useState("NEXT UP")
+  const [today] = useState(new Date())
+
+
+  const checkDay = () => {
+    if(rest.props.day === today.getDay()){
+      setHeaderOpen("TODAY")
+    }else{
+      setHeaderOpen("NEXT UP")
+    }
+  }
+
+  useEffect(() => {
+    checkDay()      
+  }, [])
+  
+
 
   return(
-    <div onClick={ () => setOpen(!open)} className="dpreview" >
-      <h1> <i> Nextup: </i></h1>
+    <div  className="dpreview" >
+
+          <h1 className= {open ? "sec-col" : ""}>
+            <i> 
+          {
+                open ? headerOpen : "NEXT UP"
+          }
+          </i>
+             
+          </h1>
       {open && rest}
-    
     </div>
   )
 }

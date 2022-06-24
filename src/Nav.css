@@ -1,136 +1,54 @@
 .main-menu{
-  /* border: solid #fff 1px; */
   height: 7em;
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   font-size: 16px;
-  /* background-color: var(--bg); */
+  margin: 16px;  
 }
 
+.menu-container{
+  height: 7em;
+  position: fixed;
+  width: 100vw;
+  max-width: 100%;
+}
 .main-menu::-webkit-scrollbar {
   display: none;
 }
 .menu-dd::-webkit-scrollbar {
-  display: none;
+  display: none;  
 }
 
 .menu-btn{
   display: flex;
   justify-content: space-around;
   font-size: 2em;
-  /* -webkit-text-fill-color: #fff; */
-  width: 10em;
+  width: 12em;
 }
 
 .menu-btn a{
-  color: var(--play-col);
-  /* -webkit-text-stroke-width: 1.5px; */
+  color: var(--main-col);
   transition: all 700ms ease;
 }
 
-/* .menu-btn a:hover{
-  color: var(--sec-main-col);
-  transition: all 900ms ease;
-} */
-.menu-btn a:target{
-  color: var(--sec-main-col);
-}
-
-.menu-dd{
-  /* background-color: var(--bg); */
-  padding: 0em 10em 0em 10em;
-  width: 14em;
-  margin-top: 0em;
-  height: 0em;
+.pageMenu{
+  background-color: rgb(128, 128, 128, 0.7);
+  background-color: var(--sec-col-op);
+  /* line-height: 30px; */
+  position: absolute;
+  padding: 1em;
+  top: 10em;
+  right: 2em;
+  height: 45em;
+  width: 800px;
   overflow: scroll;
-  /* position: relative; */
 }
 
-
-.menu-dd-appear {
-  transition: all ease 1s;
-  margin-top: 10em;
-  opacity: 0;
-}
-
-.dd-entering{
-  height: 0em;
-  padding-top: 0em;
-}
-.dd-entered{
-  transition: all ease;
-  /* height: 100vh; */
-}
-
-
-/* .dd-enter-active .calendar{
-  transition: all ease;
-  height: 100vh;
-} */
-
-.dd-exit {
-  transition: all ease 1s;
-  height: 90vh;
-}
-
-.dd-exit-active {
-  transition: all ease 1s;
-  height: 0em;
-}
-
-
-.mainNav{
-  /* position: fixed; */
-  height: 4em;
-  /* transition: all 1s; */
-  background-color: #fff;
-  transition: height ease-in 2s;
-}
-
-
-.dropdown{
-  display: flex;
-}
-
-.my-node-enter{
-  opacity: 0;
-  /* transform: translateY(-140%); */
-  height: 0vh;
-}
-.my-node-enter-active{
-  
-  /* transform: translateY(0%); */
-  transition: all 2s ease;
-  height: 100vh;
-  opacity: 1;
-}
-
-.my-node-exit{
-  opacity: 1;
-  height: 0vh;
-}
-.my-node-exit-active{
-  transition: all 1s ease;
-  opacity: 0;
-  height: 0vh;
-}
-
-.node{
-  width: 100vw;
-}
-
-
-.mainNav{
-  display: flex;
-  
-  justify-content:flex-end;
-  
-  /* background-color: transparent; */
-  /* transition: 11s; */
-  transition: height ease-in 2s; 
+.pageMenu::-webkit-scrollbar {
+  display: none;
+  color: transparent;
+  scrollbar-width: none;
 }
 
 .menuBtn{
@@ -138,18 +56,79 @@
   position: relative;
 }
 
-.menuContent{
-  background-color: transparent;
+@media (max-height:850px){
+  .pageMenu{
+    height: 10em;
+    padding-bottom: 1113em;
+    margin-bottom: 1111em;
+  }
 }
 
-.navItem{
-  background-color: #fff;
-  transition: height ease-in 800ms;
-  height: 4em;
+@media (max-width: 900px) {
+  .pageMenu {
+    position: absolute;
+    top: 154px;
+    right: 0em;
+    left: 0em;
+    /* width: 100; */
+    width: calc(100vw - var(--scrollbarWidth));
+    overflow-y: scroll;
+    background-color: rgb(128, 128, 128, 0.8);
+  }
+  .main-menu {
+    background-color: var(--sec-col);
+    height: 7em;
+    display: flex;
+    width: calc(100vw - 16px);
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    font-size: 16px;
+    width: 100%;
+    margin: 0px;  
+  }
+  .menu-btn{
+    /* border: #000 solid ; */
+    position: absolute;
+    background-color: var(--main-col);
+    width: 100%;
+    top: 111px;
+  }
+  .menu-btn a{
+    color: #000;
+  }
 }
 
-.openHeight{
-  height: 100vh;
+@media (min-width: 3200px) {
+  .pageMenu{
+    width: 950px;
+    right: 0;
+  }
+  .main-menu {
+    top: 0em;
+    height: 7em;
+    display: flex;
+    width: calc(100vw - 20em);
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    font-size: 16px;
+    width: 100%;
+    margin: 0px;  
+  }
+  .menu-btn{
+    display: flex;
+    justify-content: baseline;
+    justify-items: center;
+    align-items: center;
 
-  transition: all ease-in-out 2s;
+    background-color: var(--main-col);
+    width: 50%;
+    width: 950px;
+    top: 111px;
+    height: 2em;
+  }
+  .menu-btn a{
+    color: #000;
+  }
 }

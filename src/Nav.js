@@ -2,26 +2,13 @@ import {useState, useRef, useEffect} from 'react'
 import './Nav.css'
 import AudioPlayer from './Components/AudioPlayer/AudioPlayer';
 import { CSSTransition } from 'react-transition-group';
-
+import useFetchAudioInfo from './Hooks/useFetchAudioInfo'
 
 function NavBar(props){
 
-
-  function NavItem(props) {
-    
-    return(
-      <a href="#" className='menuItem' onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-
-        <span className='menubtn'>{props.name}</span>
-        {props.children}
-      
-      </a>  
-    ) 
-  }
-  
-  const [openA, setOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false)
-
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  // const [windowDimensions] = useWindowDimensions()
 
   function menuChange(menuOpen){
     if(activeMenu === menuOpen){
@@ -32,35 +19,70 @@ function NavBar(props){
   } 
 
 
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
+
   return(
     <div className="menu-container">
    
       <div className='main-menu' >
         
-        <AudioPlayer />
+        <AudioPlayer mobile ={props.mobile} wWidth = {windowDimensions.width >= 600 ? true: false} url="https://halloradi0.out.airtime.pro/halloradi0_a" />
+
+        
         <div className="menu-btn">
           <a href='#' className="m-btn"  onClick={() => menuChange('cal')}>
-            <i className={ activeMenu === 'cal' ? "text-sec-col" : "" }>
+            <i className={ activeMenu === 'cal' ? "sec-col" : "" }>
               Calendar
             </i>
           </a>
+      
+      
           <a href='#' className="m-btn" onClick={() => menuChange('info')}>
-            <i>
+            <i className={ activeMenu === 'info' ? "sec-col" : "" }>
               HALLO:
             </i>
           </a>
+         
+          <a href='#' className="m-btn" onClick={() => menuChange('chat')}>
+            <i className={ activeMenu === 'chat' ? "sec-col" : "" }>
+              CHAT
+            </i>
+          </a>
+      
         </div>
       </div>
-      
-     
-      
-
-      <CSSTransition
+        {
+          activeMenu && 
+          <PageMenu wWidth = {windowDimensions.width >= 600 ? true: false}>
+            { 
+                props[activeMenu]
+            }
+            </PageMenu>
+          
+        }
+      {/* <CSSTransition
         in={activeMenu === "cal"}
         timeout={1000}
         classNames="dd"
       >
-        <div className={ activeMenu === "cal"? 'menu-dd' : 'menu-dd '}>
+        <div className={ activeMenu === "cal"? 'menu-dd' : ''}>
           { activeMenu === 'cal'  && props.children[0]}
         </div>
       </CSSTransition>
@@ -69,58 +91,38 @@ function NavBar(props){
         in={activeMenu === "info"}
         timeout={1000}
         classNames="dd"
-        >
-        <div className={ activeMenu === "info"? 'menu-dd' : 'menu-dd '}>
+      >
+        <div className={ activeMenu === "info"? 'menu-dd' : ''}>
           { activeMenu === 'info'  && props.children[1]}
         </div>
-      </CSSTransition>
-
+      </CSSTransition> */}
     </div>
 
-
-
-  //   <div className="dropdown" style={{ height: menuHeight }} ref={propRef}>
-      
-  //           <button type="button" onClick={() => setInProp(!inProp)}>
-  //             Click to Enter
-  //           </button>
-
-  // <div>
-  //       <CSSTransition in={inProp} timeout={1200} classNames="my-node" >
-  //       <div>
-  //          { inProp && props.children }
-  //       </div>
-  //     </CSSTransition>
-  //   </div>      
-
- 
-  //     </div>
   )
 }
 
 
+function PageMenu({wWidth, children}){
+  const nodeRef = useRef(null)
 
-// function NavBar(props){
-//   const [open, setOpen] = useState(false)
-//   const [activeMenu, setActiveMenu] = useState("main")
-
-//   return(
-//     <div className='navContainer'>
-//     <div className='mainNav'>
-
-//       <div className='menuBtn'>
-//         <a href='#' onClick={() => setOpen(!open)}>
-//           <div>Calendar</div>
-//         </a>
-//       </div>
-//     </div>
-            
-//       <div className="menuContent">
-//         {open && props.children}
-//       </div>
-    
-//     </div>
-//     )
-// }
+  return(
+    <div className="page-container">
+      {wWidth ? 
+      // <Draggable nodeRef={nodeRef}>
+        <div ref={nodeRef} className="pageMenu">
+        { 
+          children
+        }
+        </div>
+      :
+      <div ref={nodeRef} className="pageMenu">
+      { 
+        children
+      }
+      </div>    
+      }
+  </div>
+  )
+}
 
 export default NavBar

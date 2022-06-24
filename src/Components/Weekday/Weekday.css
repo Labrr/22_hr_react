@@ -7,6 +7,7 @@ li{
 .evTime{
     margin-left: 1em;
     width: 2.5em;
+    font-weight: 900;
 }
 
 .evName{
@@ -26,6 +27,7 @@ li{
 }
 
 .dayHead{
+    font-size: 40px;
     display: flex;
     writing-mode: vertical-rl;
     justify-content: center;
@@ -33,9 +35,9 @@ li{
 
 
 .weekday{
+    min-height: 7em;
     margin: 1em;
     padding-bottom: 1.5em;
-    /* padding: 1em; */
     display: flex;
     border-bottom: #000 solid 4px;
 }
