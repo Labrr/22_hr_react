@@ -8,18 +8,22 @@ import Calendar from './Components/Calendar/Calendar';
 import NavBar from './Nav';
 import useWindowDimensions from './Hooks/useWindowDimensions';
 import useCalendarDates from './Hooks/useCalendarDates';
-
+import Modal_popup from './Pages/Modal_popup';
 
 function App() {
   const [windowDimensions] = useWindowDimensions([])
   const [mobile] = useState(windowDimensions.width <= 600)
   const [weekEvents, isLoaded, error] = useCalendarDates([]);
-  const [bg3d, setbg3d] = useState(false);
+  // const [bg3d, setbg3d] = useState(false);
+
+
 
   return (
     <>
       <div className="App">
-        
+
+      <Modal_popup/>
+    
         <NavBar
           mobile={mobile}
           cal={<Calendar active={true} week={isLoaded ?  weekEvents : false} error={error} />}      
@@ -30,7 +34,6 @@ function App() {
       </div>  
     
       {/* <button className="button-bg" onClick={ console.log("h")}>Click</button> */}
-
 
       <div className="bg-app">
       { 

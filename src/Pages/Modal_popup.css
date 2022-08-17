@@ -1,0 +1,57 @@
+.modal_wrapper{
+    position: absolute ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+        /* top: 0;
+        left: auto; */
+    width: 100vw;
+    height: 100vh;
+    
+    /* border: #fff solid 2px; */
+    /* background-image: url("hallofest_22.png"); */
+}
+
+.modal_img{
+    transition: ease all 1s;
+    height: 800px;
+    width: 600px;
+    z-index: 100;
+}
+
+.hide{
+    /* animation: wrapper_non_display 1s; */
+    /* z-index: -70; */
+    display: none;
+}
+.op_out{
+    opacity: 0;
+}
+/* 
+@keyframes wrapper_non_display {
+    from {
+        display: block;
+        opacity: 1;
+    }
+    to {
+        display: none;
+        opacity: 0;
+    }
+} */
+
+@media (max-width: 600px) {
+    .modal_img{
+        transition: ease all 400ms;
+        height: auto;
+        width: 100vw;
+    }
+    
+    @media (max-height: 600px) {
+        .modal_img{
+            transition: ease all 400ms;
+            height: auto;
+            width: 100vw;
+    }
+}
+}

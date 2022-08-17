@@ -60,12 +60,12 @@ function NavBar(props){
             </i>
           </a>
          
-          <a href='#' className="m-btn" onClick={() => menuChange('chat')}>
+          {/* <a href='#' className="m-btn" onClick={() => menuChange('chat')}>
             <i className={ activeMenu === 'chat' ? "sec-col" : "" }>
               CHAT
             </i>
           </a>
-      
+       */}
         </div>
       </div>
         {
